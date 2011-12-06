@@ -2,7 +2,7 @@
 
 namespace Pixy;
 
-class Pixy {
+abstract class Pixy {
   
   public function __construct() {}
   
@@ -10,7 +10,7 @@ class Pixy {
    * Traitement d'une chaine à inserer dans une BDD
    * @return string
    */
-  function clean_text($chaine) {
+  public static function clean_text($chaine) {
     $chaine = htmlentities($chaine, ENT_NOQUOTES, 'utf-8');  
     return $chaine;
   }
@@ -22,7 +22,7 @@ class Pixy {
    * Param : nombre max de caractères
    * @return string
    */
-  function tronquer_chaine($chaine, $nbCharMax) {
+  public static function tronquer_chaine($chaine, $nbCharMax) {
     if (strlen($chaine) > $nbCharMax) {
       $chaine = substr($chaine, 0, $nbCharMax);
       $last_space = strrpos($chaine, " ");
@@ -36,7 +36,7 @@ class Pixy {
    * Réécrit une chaine pour l'url-rewriting
    * @return string
    */
-  function url_rewrite_chaine($s) {
+  public static function url_rewrite_chaine($s) {
     // $s = strtr($s,
           // 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
           // 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
@@ -50,7 +50,7 @@ class Pixy {
    * Réécrit une chaine pour l'url-rewriting
    * @return string
    */
-  function urlChars( $url, $type = 'null' ) {
+  public static function urlChars( $url, $type = 'null' ) {
     $url = utf8_encode($url);
     $url = preg_replace("`\[.*\]`U","",$url);
     $url = preg_replace('`&(amp;)?#?[a-z0-9]+;`i','-',$url);
@@ -68,7 +68,7 @@ class Pixy {
    * Retourne une chaine clean pour un nom de fichier, tronqué si trop long
    * @return string
    */
-  function cleanImageName($chaine, $type = 'null') {
+  public static function cleanImageName($chaine, $type = 'null') {
     $chaine = utf8_encode($chaine);
     $chaine = preg_replace("`\[.*\]`U","",$chaine);
     $chaine = preg_replace('`&(amp;)?#?[a-z0-9]+;`i','-',$chaine);
@@ -84,7 +84,7 @@ class Pixy {
    * Supprime les accents
    * @return string
    */
-  function wd_remove_accents($str, $charset='utf-8')
+  public static function wd_remove_accents($str, $charset='utf-8')
   {
     $str = htmlentities($str, ENT_NOQUOTES, $charset);
     
@@ -100,11 +100,22 @@ class Pixy {
    * Retourne le nom de la page
    * @return string
    */
-  function getNomPage() {
+  public static function getNomPage() {
     $nompage =  $_SERVER['PHP_SELF'];
     $nompage = explode('/',$nompage);
     $nompage = $nompage[COUNT($nompage)-1];
     return $nompage;
+  }
+  
+  /**
+   *
+   * @param type $string
+   * @return type $string
+   */
+  public static function getExtensionFile($file) {
+    $file = explode('.',$file);
+    $file = $file[COUNT($file)-1];
+    return $file;
   }
   
 }
