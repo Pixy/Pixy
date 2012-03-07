@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Exemple Plug-In pTabs</title>
+        <link rel="stylesheet" media="screen" type="text/css" title="Design" href="css/jquery.pTabs.css" />
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.pTabs.js"></script>
+    </head>
+
+    <body>
+    <h1>Exemple</h1>
+    
+    <ul>
+      <li><a href="index.html">Exemple basique </a></li>
+      <li><a href="exemple2.html">Preload d'un autre onglet</a></li>
+      <li><a href="exemple3.html">Avec des données</a></li>
+      <li><a href="exemple4.html">Avec callback</a></li>
+    </ul>
+    
+    <div id="pTabs">
+      <ul class="liste-tabs">
+        <li><a href="exemple2/exemple.php" id="onglet1" >Onglet 1</a></li>
+        <li><a href="exemple2/exemple.php" id="onglet2" >Onglet 2</a></li>
+        <li><a href="exemple2/exemple.php" id="onglet3" >Onglet 3</a></li>
+      </ul>
+    </div>
+    
+    <p>
+    Script : <br />
+    $(function() {<br />
+      $('#pTabs').pTabs(){<br />
+        data: function(lien) {<br />
+          return 'onglet=' + $(lien).attr('id');<br />
+        }<br />
+      };<br />
+    });<br />
+    </p>
+    
+    <script type="text/javascript">
+    $(function() {
+      $('#pTabs').pTabs({
+        data: function(lien) {
+          return 'onglet=' + $(lien).attr('id');
+        }
+      });
+    });
+    </script>
+    
+    </body>
+</html>
