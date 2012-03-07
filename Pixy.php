@@ -108,11 +108,6 @@ abstract class Pixy {
   }
   
   /**
-<<<<<<< HEAD
-   * Retourne l'extension d'un fichier
-=======
-   *
->>>>>>> f3928e41d908ef79c6870eee03b7893dda5ba0bb
    * @param type $string
    * @return type $string
    */
@@ -121,8 +116,7 @@ abstract class Pixy {
     $file = $file[COUNT($file)-1];
     return $file;
   }
-  
-<<<<<<< HEAD
+ 
   /**
    * Retourne le nom d'un fichier
    * @param string
@@ -160,7 +154,3 @@ abstract class Pixy {
     $texte = preg_replace($in, $out, $texte); 
     return $texte;
   }
-    
-=======
->>>>>>> f3928e41d908ef79c6870eee03b7893dda5ba0bb
-}
