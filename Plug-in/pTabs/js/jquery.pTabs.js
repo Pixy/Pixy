@@ -8,7 +8,7 @@
  * preload: Le numéro de l'onglet à charger en premier
  *
  *
-*/
+ */
 (function($) {
   $.fn.pTabs=function(options) {
     var defauts = {
