@@ -1,0 +1,40 @@
+/*
+ * Développé par Pierre-Alexis GODET
+ * 
+ *
+*/
+
+/***************************
+* Style général
+***************************/
+#pTabs { width: 100%; border: 1px solid #959393;}
+#pTabs ul {width: 100%;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px; 
+  background-color: #5a5a5a;
+}
+#pTabs ul li {float: left; display: inline; padding: 10px; margin: 0 1px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px; 
+  border: 1px solid #959393;
+  margin: 5px 1px 0;
+}
+#pTabs .pClear {clear: both;}
+
+#pTabs ul li a {}
+#pTabs ul li.currentTab a {color: #DFDDA3;}
+
+
+
+#pTabsContainer {padding-top: 20px; clear: both;}
+
+#pTabsLoader {clear: both; width: 100%; text-align: center; padding-top: 50px;}
+#pTabsLoader img {}

@@ -1,0 +1,3 @@
+PixyPixyBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: PixyPixyBundle:Default:index }
