@@ -21,10 +21,13 @@
       'fadeTime': 500,    // Durée de la transition lors de l'animation
       'circular': true,      // Circulaire
       'auto': false,        // Navigation automatique
-      'intervalle': 5000  // Intervalle pour la navigation automatique
+      'intervalle': 5000,  // Intervalle pour la navigation automatique
+      'title': ''                  // Titre principale du Slider
     };  
     
-    // Variables globales
+    /*********************************
+     * VARIABLES GLOBALES
+     *********************************/
     var parametres = $.extend(defauts, options);
     var element = $(this); // On stock l'element
     var imagesContainer = $('#pListe li');
@@ -40,6 +43,9 @@
     var pThumbnails;
     
 
+    /*********************************
+     * MISE EN PLACE DU MAIN CONTAINER 
+     *********************************/
     $('body').append('<div id="pContainer"></div>');
     var pContainer = $('#pContainer');
     pContainer.css({
@@ -47,6 +53,23 @@
       'width': screenWidth
     });
     
+    /*********************************
+     * TITRE DE LA PAGE
+     *********************************/
+    if(parametres.title != '') {
+      pContainer.append('<div id="pTitle"><h2>' + parametres.title + '</h2></div>');
+    } else {
+      pContainer.append('<div id="pNoTitle"></div>');
+    }
+    
+    /*********************************
+     * CONTAINER FERMETURE
+     *********************************/
+    pContainer.append('<div id="pClose"><a href="#">X</a></div>');
+    
+    /*********************************
+     * MISE EN PLACE DU CONTAINER IMAGE
+     *********************************/
     $(pContainer).append('<div id="imageDisplayContainer"></div>');
     var imageDisplayContainer = $('#imageDisplayContainer');
     
@@ -54,14 +77,20 @@
     var imageDisplay = $('#imageDisplay');
     
     
-    // Si navigation par thumbnails
+    
+    
+    
+    /*********************************
+     * NAVIGATION PAR THUMBNAILS
+     *********************************/
     if(parametres.thumbnails == true) {
       pContainer.append('<div id="pThumbnails"><ul id="imagesThumb" ></ul></div>');
       pThumbnails = $('#pThumbnails');
       var imagesThumbs = $('#imagesThumb');
       imagesThumbs.css('width', (nbImages * 100) + (nbImages * 20));
       $(imagesContainer).each(function(i) {
-        imagesThumbs.append('<li id="thumb-' + i + '"><img src="' + $(imagesContainer[i]).find('a').attr('href') + '" alt="' + $(imagesContainer[i]).find('a').html() + '" title="' + $(imagesContainer[i]).find('a').html() + '" /></li>');
+        var thumbSrc = ($(imagesContainer[i]).find('a').attr('rel')) ?  $(imagesContainer[i]).find('a').attr('rel') :$(imagesContainer[i]).find('a').attr('href');
+        imagesThumbs.append('<li id="thumb-' + i + '"><img src="' + thumbSrc + '" alt="' + $(imagesContainer[i]).find('a').html() + '" title="' + $(imagesContainer[i]).find('a').html() + '" /></li>');
       });
       $(pThumbnails).jScrollPane();
       $('#imagesThumb li').click(function(e) {
@@ -71,7 +100,9 @@
     }
     
     
-    // Si navigation par thumbnails
+    /*********************************
+     * NAVIGATION PAR FLECHES
+     *********************************/
     if(parametres.navigation == true) {
       pContainer.append('<div id="navLeft" class="nav prev left"><a href="#">L</a></div>');
       pContainer.append('<div id="navRight" class="nav next right"><a href="#">R</a></div>');
@@ -93,15 +124,18 @@
           if(parametres.circular == true) { // Si le slider est circulaire
             displayImg(nbImages - 1);
           }
-        } else { // Sinon on incrémente
+        } else { // Sinon on décrémente
           displayImg(parseInt(currentImg) - 1);
         }
       });
     }
     
     
-    // Au resize de la page
+    /*********************************
+     * RESIZE DE LA PAGE
+     *********************************/
     $(window).resize(function() {
+      // Mise à jour du layer de fond noir
       screenWidth = $(window).width();
       screenHeight = $(window).height();
       pContainer.css({
@@ -110,8 +144,33 @@
       });
     });
     
-        
-    // Fonction de navigation
+    
+    /*********************************
+     * MISE A JOUR DE LA NAVIGATION
+     *********************************/
+    function updateNav() {
+      $('#pContainer .disabled').removeClass('disabled');
+      if(parseInt(currentImg) == nbImages - 1 && parametres.circular == false) { // Si c'est la première image et que le slider n'est pas circulaire
+        $('#navRight').addClass('disabled');
+      }
+      if(parseInt(currentImg) == 0 && parametres.circular == false) { // Si c'est la première image et que le slider n'est pas circulaire
+        $('#navLeft').addClass('disabled');
+      }
+    }
+    
+    /*********************************
+     * MISE A JOUR DES THUMBS
+     *********************************/
+    function updateThumbs(numImage) {
+      $('.thumbHover').removeClass('thumbHover');
+      $('#thumb-' + numImage).addClass('thumbHover');
+    }
+
+    
+    
+    /*********************************
+     * AFFICHAGE D'UNE NOUVELLE IMAGE
+     *********************************/
     function displayImg(numNextImage) {
       if(animating == false) {
         nextImg = $($('#pListe li')[numNextImage]).find('a');
@@ -120,6 +179,8 @@
         image.src = $(nextImg).attr('href');
         image.alt = $(nextImg).html();
         image.title = $(nextImg).html();
+        console.log(image.height);
+        console.log(image.width);
         
         $(image).one("load",function(){
           animating = true;
@@ -127,7 +188,8 @@
             $(this).empty().append(image).fadeIn(fadeTime, function() {
             currentImg = numNextImage;
             animating = false;
-            console.log(currentImg);
+            if(parametres.navigation == true) { updateNav(); }
+            if(parametres.thumbnails == true) { updateThumbs(currentImg); }
           });
           });
         })
@@ -139,21 +201,9 @@
     }
 
     
-    // Mise à jour de la navigation 
-    function updateNav() {
-      $('#pContainer .disabled').removeClass('disabled');
-      if(parseInt(currentImg) == nbImages - 1 && circular == false) { // Si c'est la première image et que le slider n'est pas circulaire
-        $('#navRight').addClass('disabled');
-      }
-      if(parseInt(currentImg) == 0 && circular == false) { // Si c'est la première image et que le slider n'est pas circulaire
-        $('#navLeft').addClass('disabled');
-      }
-    }
-    
-    
     /*********************************
-    * AFFICHAGE PREMIERE IMAGE 
-    *********************************/
+     * AFFICHAGE PREMIERE IMAGE 
+     *********************************/
     displayImg(currentImg);
     
     

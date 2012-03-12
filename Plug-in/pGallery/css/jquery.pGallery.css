@@ -11,7 +11,15 @@
 #pGallery #pListe {display: none;}
 
 #pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white; }
-#pContainer p, #pContainer div {margin: 0; padding: 0;}
+#pContainer a {color: white; text-decoration: none;}
+
+#pContainer #pNoTitle {width: 80%; margin: 10px auto; height: 40px; }
+#pContainer #pTitle {background-color: black; width: 80%; margin: 10px auto; text-align: center; height: 40px}
+#pContainer #pTitle h2 {font-size: 20px; text-transform: uppercase; padding: 8px; margin: 0;}
+
+#pContainer #pClose {position: fixed; top: 0; right: 0; width: 50px; height: 50px; text-align: center;}
+#pContainer #pClose:hover {border: 2px solid #1e1e1e;}
+#pContainer #pClose a {position: absolute; top: 30%;}
 
 
 /***************************
@@ -19,7 +27,8 @@
 ***************************/
 #pThumbnails {width: 100%; background-color: #050505; position: fixed; border-top: 2px solid #1e1e1e; height: 120px; padding: 10px 0; bottom: 0;}
 #pThumbnails #imagesThumb {margin: 10px 0; padding: 0; height: 100px;}
-#pThumbnails #imagesThumb li {float: left; display: inline; width: 100px; height: 100px; margin: 0 10px; overflow: hidden;}
+#pThumbnails #imagesThumb li {float: left; display: inline; width: 100px; height: 100px; margin: 0 10px; overflow: hidden; cursor: pointer; opacity: 0.5; }
+#pThumbnails #imagesThumb li.thumbHover, #pThumbnails #imagesThumb li:hover {opacity: 1;}
 #pThumbnails #imagesThumb li img {width: 100%;}
 
 
@@ -28,7 +37,16 @@
 ***************************/
 #pContainer .nav {width: 50px; height: 50%; position: absolute; top: 50px; text-align: center; cursor: pointer;}
 #pContainer .nav:hover {background-color: #1e1e1e;}
-#pContainer .nav.disabled {cursor: default;}
-#pContainer .nav a {color: white; text-decoration: none; top: 50%; position: absolute; }
+#pContainer .nav.disabled, #pContainer .nav.disabled a {cursor: default;}
+#pContainer .nav a { top: 50%; position: absolute; }
 #pContainer #navLeft {left: 0;}
 #pContainer #navRight { right: 0;}
+
+
+
+/***************************
+* Image container
+***************************/
+#imageDisplayContainer {width: 80%; margin: 0 auto; }
+#imageDisplayContainer #imageDisplay {width: 80%; margin: 0 auto; text-align: center; }
+#imageDisplayContainer #imageDisplay img {max-width: 100%; }
