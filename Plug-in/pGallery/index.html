@@ -14,38 +14,54 @@
     </head>
 
     <body>
-    <h1>Exemple d'utilisation de pGallery</h1>
-    
-    <div id="pGallery">
-      <a href="#">Voir les photos</a>
-      <ul id="pListe">
-        <li><a href="images/1.jpg" rel="images/miniatures/1.jpg" >Une langue</a></li>
-        <li><a href="images/2.jpg" rel="images/miniatures/2.jpg" ></a></li>
-        <li><a href="images/3.jpg" rel="images/miniatures/3.jpg" >Guizmo ?</a></li>
-        <li><a href="images/4.jpg" rel="images/miniatures/4.jpg" >Music</a></li>
-        <li><a href="images/5.jpg" rel="images/miniatures/5.jpg" >Deadmau5</a></li>
-        <li><a href="images/6.jpg" rel="images/miniatures/6.jpg" ></a></li>
-        <li><a href="images/7.jpg" rel="images/miniatures/7.jpg" ></a></li>
-        <li><a href="images/8.jpg"></a></li>
-        <li><a href="images/9.jpg" rel="images/miniatures/9.jpg" >Nike</a></li>
-        <li><a href="images/10.jpg" rel="images/miniatures/10.jpg" >RATP</a></li>
-        <li><a href="images/11.png" >Un plus long titre pour tester comment ça fonctionne</a></li>
-      </ul>
-    </div>
-    
-    
-    <script type="text/javascript">
-      $('#pGallery').pGallery({
-        'thumbnails': true, // Affichage ou non de la navigation par Thumbnails
-        'navigation': true,  // Affichage ou non de la navigation par flèches
-        'currentImg': 0,     // Première image appelée
-        'fadeTime': 500,    // Durée de la transition lors de l'animation
-        'circular': false,      // Circulaire
-        'auto': false,        // Navigation automatique
-        'intervalle': 5000,  // Intervalle pour la navigation automatique
-        'title': 'Titre principale du slider' // Titre principale du Slider
-      });
-    </script>
+      <h1>Exemple d'utilisation de pGallery</h1>
+      
+      <div id="pGallery">
+        <a href="#">Voir les photos</a>
+        <ul id="pListe">
+          <li><a href="images/1.jpg" rel="images/miniatures/1.jpg" >Une langue</a></li>
+          <li><a href="images/2.jpg" rel="images/miniatures/2.jpg" ></a></li>
+          <li><a href="images/3.jpg" rel="images/miniatures/3.jpg" >Guizmo ?</a></li>
+          <li><a href="images/4.jpg" rel="images/miniatures/4.jpg" >Music</a></li>
+          <li><a href="images/5.jpg" rel="images/miniatures/5.jpg" >Deadmau5</a></li>
+          <li><a href="images/6.jpg" rel="images/miniatures/6.jpg" ></a></li>
+          <li><a href="images/7.jpg" rel="images/miniatures/7.jpg" ></a></li>
+          <li><a href="images/8.jpg"></a></li>
+          <li><a href="images/9.jpg" rel="images/miniatures/9.jpg" >Nike</a></li>
+          <li><a href="images/10.jpg" rel="images/miniatures/10.jpg" >RATP</a></li>
+          <li><a href="images/11.png" >Un plus long titre pour tester comment ça fonctionne</a></li>
+        </ul>
+      </div>
+      
+      <div class="scripts">
+        <p>Le code : </p>
+        <p>
+        $('#pGallery').pGallery({<br />
+          'thumbnails': true, // Affichage ou non de la navigation par Thumbnails<br />
+          'navigation': true,  // Affichage ou non de la navigation par flèches<br />
+          'currentImg': 0,     // Première image appelée<br />
+          'fadeTime': 500,    // Durée de la transition lors de l'animation<br />
+          'circular': false,      // Circulaire<br />
+          'auto': false,        // Navigation automatique<br />
+          'intervalle': 5000,  // Intervalle pour la navigation automatique<br />
+          'title': 'Titre principale du slider' // Titre principale du Slider<br />
+        });
+        </p>
+      </script>
+      
+      
+      <script type="text/javascript">
+        $('#pGallery').pGallery({
+          'thumbnails': true, // Affichage ou non de la navigation par Thumbnails
+          'navigation': true,  // Affichage ou non de la navigation par flèches
+          'currentImg': 0,     // Première image appelée
+          'fadeTime': 500,    // Durée de la transition lors de l'animation
+          'circular': false,      // Circulaire
+          'auto': false,        // Navigation automatique
+          'intervalle': 5000,  // Intervalle pour la navigation automatique
+          'title': 'Titre principal du slider' // Titre principal du Slider
+        });
+      </script>
 
     </body>
 </html> 

@@ -22,8 +22,8 @@
       'circular': true,      // Circulaire
       'auto': false,        // Navigation automatique
       'intervalle': 5000,  // Intervalle pour la navigation automatique
-      'title': ''                  // Titre principale du Slider
-    };  
+      'title': ''                  // Titre principal du Slider
+    }; 
     
     /*********************************
      * VARIABLES GLOBALES
@@ -223,11 +223,6 @@
         init = true;
       }
     }
-    
-
-    
-    
-    
     
     
     /*********************************
