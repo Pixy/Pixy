@@ -19,8 +19,8 @@
     <div id="pGallery">
       <a href="#">Voir les photos</a>
       <ul id="pListe">
-        <li><a href="images/1.jpg">Une langue</a></li>
-        <li><a href="images/2.jpg"></a></li>
+        <li><a href="images/1.jpg" rel="images/miniatures/1.jpg" >Une langue</a></li>
+        <li><a href="images/2.jpg" rel="images/miniatures/2.jpg"></a></li>
         <li><a href="images/3.jpg">Guizmo ?</a></li>
         <li><a href="images/4.jpg">Music</a></li>
         <li><a href="images/5.jpg">Deadmau5</a></li>
@@ -35,8 +35,16 @@
     
     
     <script type="text/javascript">
-      $('#pGallery').pGallery();
+      $('#pGallery').pGallery({
+        'thumbnails': true, // Affichage ou non de la navigation par Thumbnails
+        'navigation': true,  // Affichage ou non de la navigation par flèches
+        'currentImg': 0,     // Première image appelée
+        'fadeTime': 500,    // Durée de la transition lors de l'animation
+        'circular': true,      // Circulaire
+        'auto': false,        // Navigation automatique
+        'intervalle': 5000  // Intervalle pour la navigation automatique
+      });
     </script>
 
     </body>
-</html>
+</html> 

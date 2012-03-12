@@ -1,5 +1,8 @@
 /*
+ * Plug-In jQuery
  * Développé par Pierre-Alexis GODET
+ * 
+ * Slidershow fullscreen
  * 
  * Utilise jScrollPane : 
  * jScrollPane - v2.0.0beta11 - 2011-07-04
@@ -12,11 +15,13 @@
 (function($) {
   $.fn.pGallery = function(options) {
     var defauts = {
-      'thumbnails': true,
-      'navigation': true,
-      'currentImg': 0,
-      'fadeTime': 500,
-      'circular': true
+      'thumbnails': true, // Affichage ou non de la navigation par Thumbnails
+      'navigation': true,  // Affichage ou non de la navigation par flèches
+      'currentImg': 0,     // Première image appelée
+      'fadeTime': 500,    // Durée de la transition lors de l'animation
+      'circular': true,      // Circulaire
+      'auto': false,        // Navigation automatique
+      'intervalle': 5000  // Intervalle pour la navigation automatique
     };  
     
     // Variables globales
