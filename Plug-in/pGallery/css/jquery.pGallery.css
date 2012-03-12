@@ -10,15 +10,15 @@
 #pGallery {}
 #pGallery #pListe {display: none;}
 
-#pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white; }
+#pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white;}
 #pContainer a {color: white; text-decoration: none;}
 
 #pContainer #pNoTitle {width: 80%; margin: 10px auto; height: 40px; }
 #pContainer #pTitle {background-color: black; width: 80%; margin: 10px auto; text-align: center; height: 40px}
 #pContainer #pTitle h2 {font-size: 20px; text-transform: uppercase; padding: 8px; margin: 0;}
 
-#pContainer #pClose {position: fixed; top: 0; right: 0; width: 50px; height: 50px; text-align: center;}
-#pContainer #pClose:hover {border: 2px solid #1e1e1e;}
+#pContainer #pClose {position: fixed; top: 0; right: 0; width: 50px; height: 50px; text-align: center; cursor: pointer;}
+#pContainer #pClose:hover {background-color: #1e1e1e;}
 #pContainer #pClose a {position: absolute; top: 30%;}
 
 
