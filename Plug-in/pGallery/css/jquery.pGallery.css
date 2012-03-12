@@ -9,3 +9,26 @@
 ***************************/
 #pGallery {}
 #pGallery #pListe {display: none;}
+
+#pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white; }
+#pContainer p, #pContainer div {margin: 0; padding: 0;}
+
+
+/***************************
+* Thumbnails
+***************************/
+#pThumbnails {width: 100%; background-color: #050505; position: fixed; border-top: 2px solid #1e1e1e; height: 120px; padding: 10px 0; bottom: 0;}
+#pThumbnails #imagesThumb {margin: 10px 0; padding: 0; height: 100px;}
+#pThumbnails #imagesThumb li {float: left; display: inline; width: 100px; height: 100px; margin: 0 10px; overflow: hidden;}
+#pThumbnails #imagesThumb li img {width: 100%;}
+
+
+/***************************
+* Navigation 
+***************************/
+#pContainer .nav {width: 50px; height: 50%; position: absolute; top: 50px; text-align: center; cursor: pointer;}
+#pContainer .nav:hover {background-color: #1e1e1e;}
+#pContainer .nav.disabled {cursor: default;}
+#pContainer .nav a {color: white; text-decoration: none; top: 50%; position: absolute; }
+#pContainer #navLeft {left: 0;}
+#pContainer #navRight { right: 0;}
