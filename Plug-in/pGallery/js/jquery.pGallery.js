@@ -21,7 +21,7 @@
       'fadeTime': 500,      // Durée de la transition lors de l'animation
       'circular': true,       // Circulaire
       'auto': false,          // Navigation automatique
-      'intervalle': 5000,    // Intervalle pour la navigation automatique
+      'interval': 5000,    // Intervalle pour la navigation automatique
       'title': '',                // Titre principal du Slider
       'caption': false,     // Affichage des captions
       'loader': 'images/loader.gif' // Image de loader
@@ -150,7 +150,19 @@
       // FONCTION DE RESIZE
       function updateHeight() {
         $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
-        console.log('plop');
+      }
+      
+      // FONCTION DE MISE A JOUR DE LA POSITION EN HAUTEUR
+      function updateImagePosition() {
+        var currentImage = new Image();
+        currentImage.src = $('#imageDisplay img').attr('src');
+        var imageHeight = currentImage.height;
+        if(imageHeight < $('#imageDisplay').height()) {
+          $('#imageDisplay img').css({
+            'top': '50%',
+            'margin-top':  (0 -  imageHeight / 2)
+          });
+        }
       }
       
       // Evenement de resize du document
@@ -165,6 +177,8 @@
         
         // Mise à jour de la Hauteur 
         updateHeight();
+        
+        updateImagePosition();
         
         // Les thumbnails 
         if(parametres.thumbnails == true) {
@@ -210,7 +224,9 @@
           $(image).one("load",function(){
             animating = true;
             imageDisplay.fadeOut(fadeTime, function() {
-              $(this).empty().append(image).fadeIn(fadeTime, function() {
+              $(this).empty().append(image);
+              updateImagePosition();
+              $(this).fadeIn(fadeTime, function() {
                 currentImg = numNextImage;
                 animating = false;
                 if(parametres.navigation == true) { updateNav(); }

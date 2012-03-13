@@ -11,3 +11,5 @@
 .vert {color: #93c763;}
 .jaune {color: #f1ba00;}
 .gris {color: grey;}
+
+a, a:hover, a:focus {color: #396bd0; text-decoration: none;}

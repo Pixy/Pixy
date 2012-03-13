@@ -24,9 +24,10 @@
 * Thumbnails
 ***************************/
 #pThumbnails {width: 100%; background-color: #050505; position: fixed; border-top: 2px solid #1e1e1e; height: 120px; padding: 10px 0; bottom: 0;}
-#pThumbnails #imagesThumb {margin: 10px 0; padding: 0; height: 100px;}
+#pThumbnails #imagesThumb {margin: 0; padding: 0; height: 100px;}
 #pThumbnails #imagesThumb li {float: left; display: inline; width: 100px; height: 100px; margin: 0 10px; overflow: hidden; cursor: pointer; opacity: 0.5; }
-#pThumbnails #imagesThumb li.thumbHover, #pThumbnails #imagesThumb li:hover {opacity: 1;}
+#pThumbnails #imagesThumb li.thumbHover, #pThumbnails #imagesThumb li:hover {opacity: 1; }
+#pThumbnails #imagesThumb li.thumbHover {cursor: auto; }
 #pThumbnails #imagesThumb li img {width: 100%;}
 
 
@@ -35,7 +36,7 @@
 ***************************/
 #pContainer .nav {width: 50px; height: 50%; position: absolute; top: 50px; text-align: center; cursor: pointer;}
 #pContainer .nav:hover {background-color: #1e1e1e;}
-#pContainer .nav.disabled, #pContainer .nav.disabled a {cursor: default;}
+#pContainer .nav.disabled, #pContainer .nav.disabled a {display: none;}
 #pContainer .nav a { top: 50%; position: absolute; }
 #pContainer #navLeft {left: 0;}
 #pContainer #navRight { right: 0;}
@@ -47,4 +48,4 @@
 ***************************/
 #imageDisplayContainer {width: 80%; margin: 0 auto; }
 #imageDisplayContainer #imageDisplay {width: 80%; margin: 0 auto; text-align: center; height: 80%;}
-#imageDisplayContainer #imageDisplay img {max-width: 100%; max-height: 100%; }
+#imageDisplayContainer #imageDisplay img {max-width: 100%; max-height: 100%; position: relative;}
