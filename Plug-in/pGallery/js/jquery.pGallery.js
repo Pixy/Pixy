@@ -23,7 +23,8 @@
       'auto': false,          // Navigation automatique
       'intervalle': 5000,    // Intervalle pour la navigation automatique
       'title': '',                // Titre principal du Slider
-      'caption': false      // Affichage des captions
+      'caption': false,     // Affichage des captions
+      'loader': 'images/loader.gif' // Image de loader
     }; 
     
     /*********************************
@@ -87,7 +88,8 @@
       $(imageDisplayContainer).append('<div id="imageDisplay"></div>');
       var imageDisplay = $('#imageDisplay');
 
-      $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+      // Fix de la hauteur au chargement
+      updateHeight();
       
       
       
@@ -145,6 +147,13 @@
       /*********************************
        * RESIZE DE LA PAGE
        *********************************/
+      // FONCTION DE RESIZE
+      function updateHeight() {
+        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+        console.log('plop');
+      }
+      
+      // Evenement de resize du document
       $(window).resize(function() {
         // Mise à jour du layer de fond noir
         screenWidth = $(window).width();
@@ -154,7 +163,7 @@
           'width': screenWidth
         });
         
-        // Hauteur 
+        // Mise à jour de la Hauteur 
         updateHeight();
         
         // Les thumbnails 
@@ -162,12 +171,6 @@
           $(pThumbnails).jScrollPane();
         }
       });
-      
-      
-      function updateHeight() {
-        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
-        console.log('plop');
-      }
       
       /*********************************
        * MISE A JOUR DE LA NAVIGATION
@@ -208,11 +211,11 @@
             animating = true;
             imageDisplay.fadeOut(fadeTime, function() {
               $(this).empty().append(image).fadeIn(fadeTime, function() {
-              currentImg = numNextImage;
-              animating = false;
-              if(parametres.navigation == true) { updateNav(); }
-              if(parametres.thumbnails == true) { updateThumbs(currentImg); }
-            });
+                currentImg = numNextImage;
+                animating = false;
+                if(parametres.navigation == true) { updateNav(); }
+                if(parametres.thumbnails == true) { updateThumbs(currentImg); }
+              });
             });
           })
           .each(function(){
