@@ -155,7 +155,7 @@
         });
         
         // Hauteur 
-        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+        updateHeight();
         
         // Les thumbnails 
         if(parametres.thumbnails == true) {
@@ -163,6 +163,11 @@
         }
       });
       
+      
+      function updateHeight() {
+        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+        console.log('plop');
+      }
       
       /*********************************
        * MISE A JOUR DE LA NAVIGATION

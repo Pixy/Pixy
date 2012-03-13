@@ -8,7 +8,7 @@
 * Style général
 ***************************/
 
-#pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white;}
+#pContainer { background-color: black; background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white;}
 #pContainer a {color: white; text-decoration: none;}
 
 #pContainer #pNoTitle {width: 80%; margin: 10px auto; height: 40px; }
