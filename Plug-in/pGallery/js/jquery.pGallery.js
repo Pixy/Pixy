@@ -48,10 +48,12 @@
      * INITIALISATION DE LA GALLERY
      *********************************/
     function pGalleryInit() {
+      var pThumbnails;
       // Les tailles
       var screenWidth = $(window).width();
       var screenHeight = $(window).height();
-    
+      var divHeight = (parametres.thumbnails) ?  200 : 80
+      
       /*********************************
        * MISE EN PLACE DU MAIN CONTAINER 
        *********************************/
@@ -84,8 +86,8 @@
       
       $(imageDisplayContainer).append('<div id="imageDisplay"></div>');
       var imageDisplay = $('#imageDisplay');
-      
-      
+
+      $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
       
       
       
@@ -93,7 +95,6 @@
        * NAVIGATION PAR THUMBNAILS
        *********************************/
       if(parametres.thumbnails == true) {
-        var pThumbnails;
         pContainer.append('<div id="pThumbnails"><ul id="imagesThumb" ></ul></div>');
         pThumbnails = $('#pThumbnails');
         var imagesThumbs = $('#imagesThumb');
@@ -152,6 +153,14 @@
           'height': screenHeight,
           'width': screenWidth
         });
+        
+        // Hauteur 
+        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+        
+        // Les thumbnails 
+        if(parametres.thumbnails == true) {
+          $(pThumbnails).jScrollPane();
+        }
       });
       
       
@@ -208,17 +217,34 @@
         }
       }
       
+      
       /*********************************
-       * FERMETURE
+       * FONCTION DE FERMETURE
        *********************************/
-      $('#pClose').click(function() {
-        $('#pContainer').fadeOut(500, function() {
+      function closeGallery() {
+        $('#pContainer').fadeOut(100, function() {
           currentImg = 0;
           nextImg = 0;
           animating = false;
           $(this).remove();
         });
+      }
+      
+      /*********************************
+       * EVENEMENTS FERMETURE
+       *********************************/
+      $('#pClose').click(function() { // Sur la croix
+        closeGallery();
       });
+      
+      $(document).keydown(function(e) {
+        if (e.keyCode == 27) {
+          closeGallery();
+        }
+      });
+      
+      
+      
       
 
       
@@ -230,7 +256,8 @@
           displayImg(currentImg);
         });
       });
-    }
+      
+    } // FIN INITIALISATION
     
     
     /*********************************
