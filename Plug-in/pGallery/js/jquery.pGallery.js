@@ -221,17 +221,17 @@
           image.alt = $(nextImg).html();
           image.title = $(nextImg).html();
           
+          $(imageDisplay).empty().append('<img src="' + parametres.loader + '" alt=""loading title="loading" />');
+          
           $(image).one("load",function(){
             animating = true;
-            imageDisplay.fadeOut(fadeTime, function() {
-              $(this).empty().append(image);
-              updateImagePosition();
-              $(this).fadeIn(fadeTime, function() {
-                currentImg = numNextImage;
-                animating = false;
-                if(parametres.navigation == true) { updateNav(); }
-                if(parametres.thumbnails == true) { updateThumbs(currentImg); }
-              });
+            $(imageDisplay).empty().append(image);
+            updateImagePosition();
+            $(imageDisplay).fadeIn(fadeTime, function() {
+              currentImg = numNextImage;
+              animating = false;
+              if(parametres.navigation == true) { updateNav(); }
+              if(parametres.thumbnails == true) { updateThumbs(currentImg); }
             });
           })
           .each(function(){
