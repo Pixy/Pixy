@@ -7,8 +7,6 @@
 /***************************
 * Style général
 ***************************/
-#pGallery {}
-#pGallery #pListe {display: none;}
 
 #pContainer { background-color: rgba(0, 0, 0, 0.9); position: fixed; top: 0; left: 0; color: white;}
 #pContainer a {color: white; text-decoration: none;}

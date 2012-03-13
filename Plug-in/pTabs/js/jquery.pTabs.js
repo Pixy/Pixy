@@ -5,7 +5,7 @@
  * callback: Fonction à appeler après l'ajax
  * imageLoader: Chemin vers un loader
  * data: Les données à envoyer dans l'ajax
- * preload: Le numéro de l'onglet à charger en premier
+ * initialTab: Le numéro de l'onglet à charger en premier
  *
  *
  */
@@ -15,7 +15,7 @@
       'callback': null, // Fonction de callback
       'imageLoader' : 'images/loader.gif', // Loader par défaut
       'data' : '', // Paramètres à passer dans l'ajax
-      'preload' : 0 // L'onglet à charger par défaut
+      'initialTab' : 0 // L'onglet à charger par défaut
     };  
     
     // Variables globales
@@ -26,7 +26,7 @@
     var content = $( '#pTabsContainer' ); // On le stock
     var tabLinks = $(this).find('li a');
     
-    var firstTab = $(element.find('li')[parametres.preload]).find('a'); // On récupère le premier onglet à charger
+    var firstTab = $(element.find('li')[parametres.initialTab]).find('a'); // On récupère le premier onglet à charger
 
     /*
      * Evenement sur le clic d'un tab
@@ -79,7 +79,7 @@
     
     
     /*
-     * Preload de l'onglet
+     * initialTab de l'onglet
      */
     chargerPage(firstTab);
     
