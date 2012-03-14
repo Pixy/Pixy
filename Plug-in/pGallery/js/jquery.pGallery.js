@@ -24,7 +24,8 @@
       'interval': 5000,    // Intervalle pour la navigation automatique
       'title': '',                // Titre principal du Slider
       'caption': false,     // Affichage des captions
-      'loader': 'images/loader.gif' // Image de loader
+      'loader': 'images/loader.gif', // Image de loader
+      'keyboardNav': true // Navigation par les flèches du clavier
     }; 
     
     /*********************************
@@ -38,6 +39,7 @@
     var nextImg;
     var fadeTime = parametres.fadeTime;
     var animating = false;
+    var functionInterval;
     
     /*********************************
      * ON CACHE LA LISTE DES IMAGES
@@ -101,14 +103,20 @@
         pThumbnails = $('#pThumbnails');
         var imagesThumbs = $('#imagesThumb');
         imagesThumbs.css('width', (nbImages * 100) + (nbImages * 20));
+        // On charge la liste des images dans la barre du bas
         $(imagesContainer).each(function(i) {
           var thumbSrc = ($(imagesContainer[i]).find('a').attr('rel')) ?  $(imagesContainer[i]).find('a').attr('rel') :$(imagesContainer[i]).find('a').attr('href');
           imagesThumbs.append('<li id="thumb-' + i + '"><img src="' + thumbSrc + '" alt="' + $(imagesContainer[i]).find('a').html() + '" title="' + $(imagesContainer[i]).find('a').html() + '" /></li>');
         });
-        $(pThumbnails).jScrollPane();
+        $(pThumbnails).jScrollPane(); // On initialise le ScrollPane
+        // Evenement sur une thumb
         $('#imagesThumb li').click(function(e) {
           e.preventDefault();
-          displayImg($(this).attr('id').split('-')[1]);
+          // On arrête l'interval
+          if(parametres.auto == true) {
+            clearInterval(functionInterval);
+          }
+          displayImg($(this).attr('id').split('-')[1]); // On affiche la prochaine image
         });
       }
       
@@ -129,6 +137,10 @@
           } else { // Sinon on incrémente
             displayImg(parseInt(currentImg) + 1);
           }
+          // On arrête l'interval
+          if(parametres.auto == true) {
+            clearInterval(functionInterval);
+          }
         });
         
         // PREV
@@ -140,6 +152,10 @@
           } else { // Sinon on décrémente
             displayImg(parseInt(currentImg) - 1);
           }
+          // On arrête l'interval
+          if(parametres.auto == true) {
+            clearInterval(functionInterval);
+          }
         });
       }
       
@@ -150,10 +166,6 @@
       // FONCTION DE RESIZE
       function updateHeight() {
         $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
-        var currentImage = new Image();
-        currentImage.src = $('#imageDisplay img').attr('src');
-        var imageHeight = currentImage.height;
-        
       }
       
       // FONCTION DE MISE A JOUR DE LA POSITION EN HAUTEUR
@@ -261,15 +273,11 @@
       /*********************************
        * EVENEMENTS FERMETURE
        *********************************/
+      // Fermeture sur la croix
       $('#pClose').click(function() { // Sur la croix
         closeGallery();
       });
       
-      $(document).keydown(function(e) {
-        if (e.keyCode == 27) {
-          closeGallery();
-        }
-      });
       
       
       /*********************************
@@ -281,7 +289,63 @@
         });
       });
       
-    } // FIN INITIALISATION
+      /*********************************
+       * NAVIGATION AUTOMATIQUE
+       *********************************/
+      // Start playing the animation
+      if(parametres.auto == true) {
+        functionInterval = setInterval(function() {
+          displayImg(currentImg + 1);
+        }, parametres.interval);
+      }
+      
+      
+      /*********************************
+       * NAVIGATION PAR LE CLAVIER
+       *********************************/
+       $(document).keydown(function(e) {
+         /** FERMETURE DE LA GALLERIE **/
+        if (e.keyCode == 27) {
+          closeGallery();
+        }
+        
+        /** NAVIGATION PAR LES FLECHES DU CLAVIER **/
+        if(parametres.keyboardNav == true) {
+          // Flèche de droite - NEXT
+          if (e.keyCode == 39) {
+            if(parseInt(currentImg) == nbImages - 1) { // Si c'est la dernière image
+              if(parametres.circular == true) { // Si le slider est circulaire
+                displayImg(0);
+              }
+            } else { // Sinon on incrémente
+              displayImg(parseInt(currentImg) + 1);
+            }
+            // On arrête l'interval
+            if(parametres.auto == true) {
+              clearInterval(functionInterval);
+            }
+          }
+          
+          // Flèche de gauche - PREV
+           if (e.keyCode == 37) {
+            if(parseInt(currentImg) == 0) { // Si c'est la première image
+              if(parametres.circular == true) { // Si le slider est circulaire
+                displayImg(nbImages - 1);
+              }
+            } else { // Sinon on décrémente
+              displayImg(parseInt(currentImg) - 1);
+            }
+            // On arrête l'interval
+            if(parametres.auto == true) {
+              clearInterval(functionInterval);
+            }
+          }
+        }
+      });
+      
+       
+      
+    } /****** FIN INITIALISATION ******/
     
     
     /*********************************
