@@ -15,17 +15,17 @@
 (function($) {
   $.fn.pGallery = function(options) {
     var defauts = {
-      'thumbnails': true,   // Affichage ou non de la navigation par Thumbnails
-      'navigation': true,    // Affichage ou non de la navigation par flèches
-      'currentImg': 0,       // Première image appelée
-      'fadeTime': 500,      // Durée de la transition lors de l'animation
-      'circular': true,       // Circulaire
-      'auto': false,          // Navigation automatique
-      'interval': 5000,    // Intervalle pour la navigation automatique
-      'title': '',                // Titre principal du Slider
-      'caption': false,     // Affichage des captions
-      'loader': 'images/loader.gif', // Image de loader
-      'keyboardNav': true // Navigation par les flèches du clavier
+      'thumbnails': true,   // Affichage ou non de la navigation par Thumbnails - true
+      'navigation': true,    // Affichage ou non de la navigation par flèches - true 
+      'currentImg': 0,       // Première image appelée - 0
+      'fadeTime': 500,      // Durée de la transition lors de l'animation - 500
+      'circular': true,       // Circulaire - true
+      'auto': false,          // Navigation automatique - false
+      'interval': 5000,    // Intervalle pour la navigation automatique - 5000
+      'title': '',                // Titre principal du Slider - ''
+      'caption': false,     // Affichage des captions - false
+      'loader': 'images/loader.gif', // Image de loader - 'images/loader.gif'
+      'keyboardNav': true // Navigation par les flèches du clavier - true
     }; 
     
     /*********************************
@@ -55,7 +55,7 @@
       // Les tailles
       var screenWidth = $(window).width();
       var screenHeight = $(window).height();
-      var divHeight = (parametres.thumbnails) ?  200 : 80
+      var divHeight = (parametres.thumbnails) ?  220 : 80
       
       /*********************************
        * MISE EN PLACE DU MAIN CONTAINER 

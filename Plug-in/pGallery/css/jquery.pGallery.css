@@ -23,7 +23,7 @@
 /***************************
 * Thumbnails
 ***************************/
-#pThumbnails {width: 100%; background-color: #050505; position: fixed; border-top: 2px solid #1e1e1e; height: 120px; padding: 10px 0; bottom: 0;}
+#pThumbnails {width: 100%; background-color: #050505; position: fixed; border-top: 2px solid #1e1e1e; border-bottom: 2px solid #1e1e1e; height: 140px; padding: 10px 0; bottom: 0;}
 #pThumbnails #imagesThumb {margin: 0; padding: 0; height: 100px;}
 #pThumbnails #imagesThumb li {float: left; display: inline; width: 100px; height: 100px; margin: 0 10px; overflow: hidden; cursor: pointer; opacity: 0.5; }
 #pThumbnails #imagesThumb li.thumbHover, #pThumbnails #imagesThumb li:hover {opacity: 1; }
