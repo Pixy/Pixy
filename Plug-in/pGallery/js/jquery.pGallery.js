@@ -28,6 +28,22 @@
       'keyboardNav': true // Navigation par les flèches du clavier - true
     }; 
     
+    
+    /*********************************
+     * NAVIGATEUR
+     *********************************/
+    var userAgent = navigator.userAgent.toLowerCase();
+    var Browser = {
+        Version: (userAgent.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [])[1],
+        Chrome: /chrome/.test(userAgent),
+        Safari: /webkit/.test(userAgent),
+        Opera: /opera/.test(userAgent),
+        IE: /msie/.test(userAgent) && !/opera/.test(userAgent),
+        Mozilla: /mozilla/.test(userAgent) && !/(compatible|webkit)/.test(userAgent),
+        Check: function() { alert(userAgent); }
+    };
+
+    
     /*********************************
      * VARIABLES GLOBALES
      *********************************/
@@ -161,53 +177,6 @@
       
       
       /*********************************
-       * RESIZE DE LA PAGE
-       *********************************/
-      // FONCTION DE RESIZE
-      function updateHeight() {
-        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
-      }
-      
-      // FONCTION DE MISE A JOUR DE LA POSITION EN HAUTEUR
-      function updateImagePosition() {
-        var currentImage = new Image();
-        currentImage.src = $('#imageDisplay img').attr('src');
-        var imageHeight = currentImage.height;
-        if(imageHeight < $('#imageDisplay').height()) {
-          $('#imageDisplay img').css({
-            'top': '50%',
-            'margin-top':  (0 -  imageHeight / 2)
-          });
-        }
-      }
-      
-      // Evenement de resize du document
-      $(window).resize(function() {
-        // Mise à jour du layer de fond noir
-        screenWidth = $(window).width();
-        screenHeight = $(window).height();
-        pContainer.css({
-          'height': screenHeight,
-          'width': screenWidth
-        });
-        
-        // Mise à jour de la Hauteur 
-        updateHeight();
-        
-        // Mise à jour de la position en hauteur si image trop petite
-        updateImagePosition();
-        
-        // Mise à jour du caption
-        updateCaption();
-        
-        
-        // Les thumbnails 
-        if(parametres.thumbnails == true) {
-          $(pThumbnails).jScrollPane();
-        }
-      });
-      
-      /*********************************
        * MISE A JOUR DE LA NAVIGATION PREV - NEXT
        *********************************/
       function updateNav() {
@@ -228,8 +197,6 @@
         $('#thumb-' + currentImg).addClass('thumbHover');
       }
 
-      
-      
       /*********************************
        * AFFICHAGE D'UNE NOUVELLE IMAGE
        *********************************/
@@ -265,6 +232,60 @@
       
       
       /*********************************
+       * RESIZE DE LA PAGE
+       *********************************/
+      // FONCTION DE RESIZE
+      function updateHeight() {
+        $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+      }
+      
+      // FONCTION DE MISE A JOUR DE LA POSITION EN HAUTEUR
+      function updateImagePosition() {
+        var currentImage = new Image();
+        currentImage.src = $('#imageDisplay img').attr('src');
+        var imageHeight = currentImage.height;
+        if(imageHeight < $('#imageDisplay').height()) {
+          if(Browser.Chrome) {
+            $('#imageDisplay img').css({
+              'top': screenHeight / 2 - imageHeight,
+            });
+          } else {
+            $('#imageDisplay img').css({
+              'top': '50%',
+              'margin-top':  (0 -  imageHeight / 2)
+            });
+          }
+        }
+      }
+      
+      // Evenement de resize du document
+      $(window).resize(function() {
+        // Mise à jour du layer de fond noir
+        screenWidth = $(window).width();
+        screenHeight = $(window).height();
+        pContainer.css({
+          'height': screenHeight,
+          'width': screenWidth
+        });
+        
+        // Mise à jour de la Hauteur 
+        updateHeight();
+        
+        // Mise à jour de la position en hauteur si image trop petite
+        updateImagePosition();
+        
+        // Mise à jour du caption
+        updateCaption();
+        
+        
+        // Les thumbnails 
+        if(parametres.thumbnails == true) {
+          $(pThumbnails).jScrollPane();
+        }
+      });
+      
+      
+      /*********************************
        * MISE EN PLACE DES CAPTIONS
        *********************************/
        /** INITIALISATION **/
@@ -285,10 +306,17 @@
           $('#imageDisplay .pCaption').width($('#imageDisplay img').width()+1);
           var imageHeight = currentImage.height;
           if(imageHeight < $('#imageDisplay').height()) {
-            $('#imageDisplay .pCaption').css({
-              'top': '50%',
-              'margin-top':  (0 - 60)
-            });
+            if(Browser.Chrome) {
+              $('#imageDisplay .pCaption').css({
+                'top': screenHeight / 2 - imageHeight,
+              });
+            } else {
+              $('#imageDisplay .pCaption').css({
+                'top': '50%',
+                'margin-top':  (0 - 60)
+              });
+            }
+            
           }
         }
       }
