@@ -45,7 +45,8 @@
           <span class="orange">'circular'</span>: <span class="vert">false</span>,     <span class="gris"> // Circulaire</span><br />
           <span class="orange">'auto'</span>: <span class="vert">false</span>,       <span class="gris"> // Navigation automatique</span><br />
           <span class="orange">'interval'</span>: <span class="jaune">5000</span>, <span class="gris"> // Intervalle pour la navigation automatique</span><br />
-          <span class="orange">'title'</span>: <span class="orange">'Titre principale du slider'</span><span class="gris"> // Titre principale du Slider</span><br />
+          <span class="orange">'title'</span>: <span class="orange">'Titre principale du slider'</span>,<span class="gris"> // Titre principale du Slider</span><br />
+          <span class="orange">'keyboardNav'</span>: <span class="vert">true </span><span class="gris">// Navigation par les flèches du clavier</span><br />
         });
         </p>
       </script>
@@ -73,7 +74,8 @@
           <span class="orange">'circular'</span>: <span class="vert">true</span>,     <span class="gris"> // Circulaire</span><br />
           <span class="orange">'auto'</span>: <span class="vert">false</span>,       <span class="gris"> // Navigation automatique</span><br />
           <span class="orange">'interval'</span>: <span class="jaune">5000</span>,  <span class="gris">// Intervalle pour la navigation automatique</span><br />
-          <span class="orange">'title'</span>: <span class="orange">'Deuxième exemple'</span><span class="gris"> // Titre principale du Slider</span><br />
+          <span class="orange">'title'</span>: <span class="orange">'Deuxième exemple'</span>,<span class="gris"> // Titre principale du Slider</span><br />
+          <span class="orange">'keyboardNav'</span>: <span class="vert">true </span><span class="gris">// Navigation par les flèches du clavier</span><br />
         });
         </p>
       </script>
@@ -88,10 +90,11 @@
           'currentImg': 0,     // Première image appelée
           'fadeTime': 500,    // Durée de la transition lors de l'animation
           'circular': true,      // Circulaire
-          'auto': true,        // Navigation automatique
+          'auto': false,        // Navigation automatique
           'interval': 2000,  // Intervalle pour la navigation automatique
           'title': 'Titre principal du slider', // Titre principal du Slider
-          'keyboardNav': true // Navigation par les flèches du clavier
+          'keyboardNav': true, // Navigation par les flèches du clavier
+          'caption': true    // Affichage des captions
         });
         
         $('#pGallery2').pGallery({

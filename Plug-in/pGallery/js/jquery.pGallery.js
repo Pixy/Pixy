@@ -194,7 +194,12 @@
         // Mise à jour de la Hauteur 
         updateHeight();
         
+        // Mise à jour de la position en hauteur si image trop petite
         updateImagePosition();
+        
+        // Mise à jour du caption
+        updateCaption();
+        
         
         // Les thumbnails 
         if(parametres.thumbnails == true) {
@@ -203,7 +208,7 @@
       });
       
       /*********************************
-       * MISE A JOUR DE LA NAVIGATION
+       * MISE A JOUR DE LA NAVIGATION PREV - NEXT
        *********************************/
       function updateNav() {
         $('#pContainer .disabled').removeClass('disabled');
@@ -218,9 +223,9 @@
       /*********************************
        * MISE A JOUR DES THUMBS
        *********************************/
-      function updateThumbs(numImage) {
+      function updateThumbs() {
         $('.thumbHover').removeClass('thumbHover');
-        $('#thumb-' + numImage).addClass('thumbHover');
+        $('#thumb-' + currentImg).addClass('thumbHover');
       }
 
       
@@ -247,7 +252,8 @@
               currentImg = numNextImage;
               animating = false;
               if(parametres.navigation == true) { updateNav(); }
-              if(parametres.thumbnails == true) { updateThumbs(currentImg); }
+              if(parametres.thumbnails == true) { updateThumbs(); }
+              if(parametres.caption == true) { initCaption(); }
             });
           })
           .each(function(){
@@ -257,6 +263,35 @@
         }
       }
       
+      
+      /*********************************
+       * MISE EN PLACE DES CAPTIONS
+       *********************************/
+       /** INITIALISATION **/
+      function initCaption() {
+        if($('#imageDisplay img').attr('title') != '') {
+          $('#imageDisplay').append('<div class="pCaption"><p>' + $('#imageDisplay img').attr('title') + '</p></div>');
+          updateCaption();
+        }
+      }
+      
+      /** MISE A JOUR **/
+      function updateCaption() {
+        if(parametres.caption == true && $('#imageDisplay img').attr('title') != '') { 
+          $('#imageDisplay .pCaption').width($('#imageDisplay img').width());
+          
+          
+          var currentImage = new Image();
+          currentImage.src = $('#imageDisplay img').attr('src');
+          var imageHeight = currentImage.height;
+          if(imageHeight < $('#imageDisplay').height()) {
+            $('#imageDisplay .pCaption').css({
+              'top': '50%',
+              'margin-top':  (0 - 61)
+            });
+          }
+        }
+      }
       
       /*********************************
        * FONCTION DE FERMETURE
