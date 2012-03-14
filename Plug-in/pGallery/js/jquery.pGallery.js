@@ -245,7 +245,7 @@
         currentImage.src = $('#imageDisplay img').attr('src');
         var imageHeight = currentImage.height;
         if(imageHeight < $('#imageDisplay').height()) {
-          if(Browser.Chrome) {
+          if(Browser.Chrome) { // Si CHROME
             if(parametres.caption == true) {
               $('#imageDisplay img').css({
                   'top': screenHeight / 2,
@@ -257,19 +257,19 @@
                 'margin-top':  (0 -  imageHeight / 2)
               });
             }
-          } else {
+          } else { // Tous les autres navigateurs
             $('#imageDisplay img').css({
               'top': '50%',
               'margin-top':  (0 -  imageHeight / 2)
             });
           }
-        } else {
-          if(Browser.Chrome && parametres.caption == true) {
+        } else { // Si la hauteur de l'image > container
+          if(Browser.Chrome) { // Si CHROME
             $('#imageDisplay img').css({
                 'top': '0',
                 'margin-top': '0'
             });
-          } else if (Browser.IE) {
+          } else if (Browser.IE) { // Si IE
             $('#imageDisplay img').css({
                 'top': '0',
                 'margin-top': '0'
@@ -336,7 +336,7 @@
           if(currentImage.height < $('#imageDisplay').height()) {
             if(Browser.Chrome) {
               $('#imageDisplay .pCaption').css({
-                'top': screenHeight / 2,
+                'top': screenHeight / 2
               });
             } else {
               $('#imageDisplay .pCaption').css({
