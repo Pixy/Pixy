@@ -247,7 +247,8 @@
         if(imageHeight < $('#imageDisplay').height()) {
           if(Browser.Chrome) {
             $('#imageDisplay img').css({
-              'top': screenHeight / 2 - imageHeight,
+              'top': '50%',
+              'margin-top':  (0 -  imageHeight / 2)
             });
           } else {
             $('#imageDisplay img').css({
@@ -290,11 +291,13 @@
        *********************************/
        /** INITIALISATION **/
       function initCaption() {
-        if($('#imageDisplay img').attr('title') != '') {
-          $('#imageDisplay').append('<div class="pCaption"><p>' + $('#imageDisplay img').attr('title') + '</p></div>');
-          $('#imageDisplay .pCaption').delay(100).show(200, function() {
-            updateCaption();
-          });
+        if(!Browser.Chrome) {
+          if($('#imageDisplay img').attr('title') != '') {
+            $('#imageDisplay').append('<div class="pCaption"><p>' + $('#imageDisplay img').attr('title') + '</p></div>');
+            $('#imageDisplay .pCaption').delay(100).show(200, function() {
+              updateCaption();
+            });
+          }
         }
       }
       
@@ -316,7 +319,6 @@
                 'margin-top':  (0 - 60)
               });
             }
-            
           }
         }
       }
