@@ -11,5 +11,15 @@
 .vert {color: #93c763;}
 .jaune {color: #f1ba00;}
 .gris {color: grey;}
+.rouge {color: red;}
 
-a, a:hover, a:focus {color: #396bd0; text-decoration: none;}
+h1 {text-align: center;}
+
+h1 {border: 2px solid grey; width: 600px; padding: 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px; 
+  margin: 0 auto;
+}
+
+a, a:hover, a:focus, h1 {color: #396bd0; text-decoration: none;}

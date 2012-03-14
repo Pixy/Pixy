@@ -298,6 +298,7 @@
        *********************************/
       function closeGallery() {
         $('#pContainer').fadeOut(100, function() {
+          clearInterval(functionInterval); // On supprime l'interval !
           currentImg = 0;
           nextImg = 0;
           animating = false;
@@ -330,7 +331,8 @@
       // Start playing the animation
       if(parametres.auto == true) {
         functionInterval = setInterval(function() {
-          displayImg(currentImg + 1);
+          currentImg = (currentImg == nbImages - 1) ? 0 : currentImg + 1 // Si on arrive au bout, on remet à 0, sinon on incrémente
+          displayImg(currentImg);
         }, parametres.interval);
       }
       

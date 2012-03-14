@@ -15,7 +15,13 @@
     </head>
 
     <body>
-      <h1>Exemple d'utilisation de pGallery</h1>
+      <h1>Exemples d'utilisation de pGallery</h1>
+      
+      <p class="text">
+        Exemples d'utilisation de <span class="rouge">pGallery</span>.<br />
+        Vous pouvez <span class="rouge">naviguer</span> entre les différentes images grâce aux <span class="rouge">touches gauche et droite</span> de votre clavier.<br />
+        Pour fermer la gallerie, appuyez sur la <span class="rouge">touche Echap</span> ou cliquez sur <span class="rouge">la croix</span> en haut à droite.
+      </p>
       
       <div id="pGallery">
         <a href="#">EXEMPLE 1 (cliquez pour ouvrir la gallerie)</a>
@@ -42,11 +48,12 @@
           <span class="orange">'navigation'</span>: <span class="vert">true</span>, <span class="gris"> // Affichage ou non de la navigation par flèches</span><br />
           <span class="orange">'currentImg'</span>: <span class="jaune">0</span>,     <span class="gris">// Première image appelée</span><br />
           <span class="orange">'fadeTime'</span>: <span class="jaune">500</span>,   <span class="gris"> // Durée de la transition lors de l'animation</span><br />
-          <span class="orange">'circular'</span>: <span class="vert">false</span>,     <span class="gris"> // Circulaire</span><br />
+          <span class="orange">'circular'</span>: <span class="vert">true</span>,     <span class="gris"> // Circulaire</span><br />
           <span class="orange">'auto'</span>: <span class="vert">false</span>,       <span class="gris"> // Navigation automatique</span><br />
           <span class="orange">'interval'</span>: <span class="jaune">5000</span>, <span class="gris"> // Intervalle pour la navigation automatique</span><br />
           <span class="orange">'title'</span>: <span class="orange">'Titre principale du slider'</span>,<span class="gris"> // Titre principale du Slider</span><br />
           <span class="orange">'keyboardNav'</span>: <span class="vert">true </span><span class="gris">// Navigation par les flèches du clavier</span><br />
+          <span class="orange">'caption'</span>: <span class="vert">false </span><span class="gris">// Affichage des captions</span><br />
         });
         </p>
       </script>
@@ -69,13 +76,14 @@
         $(<span class="orange">'#pGallery2'</span>).pGallery({</span><br />
           <span class="orange">'thumbnails'</span>: <span class="vert">false</span>, <span class="gris">// Affichage ou non de la navigation par Thumbnails</span><br />
           <span class="orange">'navigation'</span>: <span class="vert">true</span>,  <span class="gris">// Affichage ou non de la navigation par flèches</span><br />
-          <span class="orange">'currentImg'</span>: <span class="jaune">4</span>,    <span class="gris"> // Première image appelée</span><br />
-          <span class="orange">'fadeTime'</span>: <span class="jaune">1200</span>,   <span class="gris">// Durée de la transition lors de l'animation</span><br />
+          <span class="orange">'currentImg'</span>: <span class="jaune">0</span>,    <span class="gris"> // Première image appelée</span><br />
+          <span class="orange">'fadeTime'</span>: <span class="jaune">100</span>,   <span class="gris">// Durée de la transition lors de l'animation</span><br />
           <span class="orange">'circular'</span>: <span class="vert">true</span>,     <span class="gris"> // Circulaire</span><br />
-          <span class="orange">'auto'</span>: <span class="vert">false</span>,       <span class="gris"> // Navigation automatique</span><br />
-          <span class="orange">'interval'</span>: <span class="jaune">5000</span>,  <span class="gris">// Intervalle pour la navigation automatique</span><br />
+          <span class="orange">'auto'</span>: <span class="vert">true</span>,       <span class="gris"> // Navigation automatique</span><br />
+          <span class="orange">'interval'</span>: <span class="jaune">3000</span>,  <span class="gris">// Intervalle pour la navigation automatique</span><br />
           <span class="orange">'title'</span>: <span class="orange">'Deuxième exemple'</span>,<span class="gris"> // Titre principale du Slider</span><br />
           <span class="orange">'keyboardNav'</span>: <span class="vert">true </span><span class="gris">// Navigation par les flèches du clavier</span><br />
+          <span class="orange">'caption'</span>: <span class="vert">true </span><span class="gris">// Affichage des captions</span><br />
         });
         </p>
       </script>
@@ -91,10 +99,10 @@
           'fadeTime': 500,    // Durée de la transition lors de l'animation
           'circular': true,      // Circulaire
           'auto': false,        // Navigation automatique
-          'interval': 2000,  // Intervalle pour la navigation automatique
+          'interval': 5000,  // Intervalle pour la navigation automatique
           'title': 'Titre principal du slider', // Titre principal du Slider
           'keyboardNav': true, // Navigation par les flèches du clavier
-          'caption': true    // Affichage des captions
+          'caption': false    // Affichage des captions
         });
         
         $('#pGallery2').pGallery({
@@ -103,10 +111,11 @@
           'currentImg': 0,     // Première image appelée
           'fadeTime': 100,    // Durée de la transition lors de l'animation
           'circular': true,      // Circulaire
-          'auto': false,        // Navigation automatique
-          'interval': 5000,  // Intervalle pour la navigation automatique
+          'auto': true,        // Navigation automatique
+          'interval': 3000,  // Intervalle pour la navigation automatique
           'title': 'Deuxième exemple', // Titre principal du Slider
-          'keyboardNav': true // Navigation par les flèches du clavier
+          'keyboardNav': true, // Navigation par les flèches du clavier
+          'caption': true    // Affichage des captions
         });
       </script>
 
