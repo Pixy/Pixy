@@ -209,7 +209,7 @@
           image.alt = $(nextImg).html();
           image.title = $(nextImg).html();
           
-          $(imageDisplay).empty().append('<img src="' + parametres.loader + '" alt=""loading title="loading" />');
+          $(imageDisplay).empty().append('<img src="' + parametres.loader + '" alt="loading" title="loading" />');
           
           $(image).one("load",function(){
             animating = true;
@@ -246,10 +246,17 @@
         var imageHeight = currentImage.height;
         if(imageHeight < $('#imageDisplay').height()) {
           if(Browser.Chrome) {
-            $('#imageDisplay img').css({
-              'top': '50%',
-              'margin-top':  (0 -  imageHeight / 2)
-            });
+            if(parametres.caption == true) {
+              $('#imageDisplay img').css({
+                  'top': screenHeight / 2,
+                  'margin-top': (0 - imageHeight / 2 - 40)
+                });
+            } else {
+              $('#imageDisplay img').css({
+                'top': '50%',
+                'margin-top':  (0 -  imageHeight / 2)
+              });
+            }
           } else {
             $('#imageDisplay img').css({
               'top': '50%',
@@ -259,7 +266,8 @@
         }
       }
       
-      // Evenement de resize du document
+      
+      /** EVENEMENT RESIZE DOCUMENT **/
       $(window).resize(function() {
         // Mise à jour du layer de fond noir
         screenWidth = $(window).width();
@@ -291,14 +299,14 @@
        *********************************/
        /** INITIALISATION **/
       function initCaption() {
-        if(!Browser.Chrome) {
+        //if(!Browser.Chrome) {
           if($('#imageDisplay img').attr('title') != '') {
             $('#imageDisplay').append('<div class="pCaption"><p>' + $('#imageDisplay img').attr('title') + '</p></div>');
             $('#imageDisplay .pCaption').delay(100).show(200, function() {
               updateCaption();
             });
           }
-        }
+        //}
       }
       
       /** MISE A JOUR **/
@@ -311,7 +319,7 @@
           if(imageHeight < $('#imageDisplay').height()) {
             if(Browser.Chrome) {
               $('#imageDisplay .pCaption').css({
-                'top': screenHeight / 2 - imageHeight,
+                'top': screenHeight / 2,
               });
             } else {
               $('#imageDisplay .pCaption').css({
