@@ -47,5 +47,5 @@
 * Image container
 ***************************/
 #imageDisplayContainer {width: 80%; margin: 0 auto; }
-#imageDisplayContainer #imageDisplay {width: 80%; margin: 0 auto; text-align: center; height: 80%;}
-#imageDisplayContainer #imageDisplay img {max-width: 100%; max-height: 100%; position: relative;}
+#imageDisplayContainer #imageDisplay { margin: 0 auto; text-align: center; height: 80%;}
+#imageDisplayContainer #imageDisplay img {width: auto; max-width: 100%; height: auto; max-height: 100%; position: relative;}

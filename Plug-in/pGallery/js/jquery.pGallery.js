@@ -150,6 +150,10 @@
       // FONCTION DE RESIZE
       function updateHeight() {
         $('#imageDisplayContainer, #imageDisplay').height(screenHeight - divHeight);
+        var currentImage = new Image();
+        currentImage.src = $('#imageDisplay img').attr('src');
+        var imageHeight = currentImage.height;
+        
       }
       
       // FONCTION DE MISE A JOUR DE LA POSITION EN HAUTEUR
