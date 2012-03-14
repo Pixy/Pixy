@@ -125,8 +125,8 @@
        * NAVIGATION PAR FLECHES
        *********************************/
       if(parametres.navigation == true) {
-        pContainer.append('<div id="navLeft" class="nav prev left"><a href="#">L</a></div>');
-        pContainer.append('<div id="navRight" class="nav next right"><a href="#">R</a></div>');
+        pContainer.append('<div id="navLeft" class="nav prev left"><a href="#">&lt;</a></div>');
+        pContainer.append('<div id="navRight" class="nav next right"><a href="#">&gt;</a></div>');
         
         // NEXT
         $('#navRight').click(function() {
@@ -271,23 +271,23 @@
       function initCaption() {
         if($('#imageDisplay img').attr('title') != '') {
           $('#imageDisplay').append('<div class="pCaption"><p>' + $('#imageDisplay img').attr('title') + '</p></div>');
-          updateCaption();
+          $('#imageDisplay .pCaption').delay(100).show(200, function() {
+            updateCaption();
+          });
         }
       }
       
       /** MISE A JOUR **/
       function updateCaption() {
         if(parametres.caption == true && $('#imageDisplay img').attr('title') != '') { 
-          $('#imageDisplay .pCaption').width($('#imageDisplay img').width());
-          
-          
           var currentImage = new Image();
           currentImage.src = $('#imageDisplay img').attr('src');
+          $('#imageDisplay .pCaption').width($('#imageDisplay img').width()+1);
           var imageHeight = currentImage.height;
           if(imageHeight < $('#imageDisplay').height()) {
             $('#imageDisplay .pCaption').css({
               'top': '50%',
-              'margin-top':  (0 - 61)
+              'margin-top':  (0 - 60)
             });
           }
         }
