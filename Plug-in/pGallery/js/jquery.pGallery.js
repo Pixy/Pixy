@@ -263,6 +263,13 @@
               'margin-top':  (0 -  imageHeight / 2)
             });
           }
+        } else {
+          if(Browser.Chrome && parametres.caption == true) {
+            $('#imageDisplay img').css({
+                'top': '0',
+                'margin-top': '0'
+              });
+          }
         }
       }
       
@@ -324,6 +331,13 @@
             } else {
               $('#imageDisplay .pCaption').css({
                 'top': '50%',
+                'margin-top':  (0 - 60)
+              });
+            }
+          } else {
+            if(Browser.Chrome) {
+             $('#imageDisplay .pCaption').css({
+                'top': '0',
                 'margin-top':  (0 - 60)
               });
             }
