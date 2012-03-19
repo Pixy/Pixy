@@ -67,6 +67,7 @@
      * INITIALISATION DE LA GALLERY
      *********************************/
     function pGalleryInit() {
+      animating = false;
       var pThumbnails;
       // Les tailles
       var screenWidth = $(window).width();
@@ -209,18 +210,20 @@
           image.alt = $(nextImg).html();
           image.title = $(nextImg).html();
           
-          $(imageDisplay).empty().append('<img src="' + parametres.loader + '" alt="loading" title="loading" />');
+          $('#imageDisplay').empty().append('<img src="' + parametres.loader + '" alt="loading" title="loading" />');
           
           $(image).one("load",function(){
             animating = true;
-            $(imageDisplay).empty().append(image);
-            updateImagePosition();
-            $(imageDisplay).fadeIn(fadeTime, function() {
-              currentImg = numNextImage;
-              animating = false;
-              if(parametres.navigation == true) { updateNav(); }
-              if(parametres.thumbnails == true) { updateThumbs(); }
-              if(parametres.caption == true) { initCaption(); }
+            $('#imageDisplay').fadeOut(fadeTime, function() {
+              $(this).empty().append(image);
+              updateImagePosition();
+              $('#imageDisplay').delay(200).fadeIn(fadeTime, function() {
+                currentImg = numNextImage;
+                if(parametres.navigation == true) { updateNav(); }
+                if(parametres.thumbnails == true) { updateThumbs(); }
+                if(parametres.caption == true) { initCaption(); }
+                animating = false;
+              });
             });
           })
           .each(function(){
@@ -364,12 +367,12 @@
        * FONCTION DE FERMETURE
        *********************************/
       function closeGallery() {
-        $('#pContainer').fadeOut(100, function() {
           clearInterval(functionInterval); // On supprime l'interval !
           currentImg = 0;
           nextImg = 0;
           animating = false;
-          $(this).remove();
+        $('#pContainer').fadeOut(100, function() {
+          $(this).empty().remove();
         });
       }
       
@@ -407,16 +410,20 @@
       /*********************************
        * NAVIGATION PAR LE CLAVIER
        *********************************/
-       $(document).keydown(function(e) {
+      $(document).bind('keypress', function(e) {
          /** FERMETURE DE LA GALLERIE **/
         if (e.keyCode == 27) {
+          e.preventDefault();
           closeGallery();
         }
         
         /** NAVIGATION PAR LES FLECHES DU CLAVIER **/
         if(parametres.keyboardNav == true) {
+          console.log('plop');
           // Flèche de droite - NEXT
           if (e.keyCode == 39) {
+          console.log(39);
+            e.preventDefault();
             if(parseInt(currentImg) == nbImages - 1) { // Si c'est la dernière image
               if(parametres.circular == true) { // Si le slider est circulaire
                 displayImg(0);
@@ -432,6 +439,8 @@
           
           // Flèche de gauche - PREV
            if (e.keyCode == 37) {
+           console.log(37);
+            e.preventDefault();
             if(parseInt(currentImg) == 0) { // Si c'est la première image
               if(parametres.circular == true) { // Si le slider est circulaire
                 displayImg(nbImages - 1);
@@ -446,7 +455,6 @@
           }
         }
       });
-      
       
       /*********************************
        * NAVIGATION PAR TOUCH MOBILE
