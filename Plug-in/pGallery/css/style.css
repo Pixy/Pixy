@@ -7,6 +7,11 @@
 /***************************
 * Style général
 ***************************/
+html, body {
+  background-color: #DDDDDD;
+}
+
+
 .orange {color: #ec7600;}
 .vert {color: #93c763;}
 .jaune {color: #f1ba00;}
