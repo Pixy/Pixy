@@ -24,8 +24,8 @@
       <p>
         Pour accéder directement à la page d'un plugin, cliquez sur le bouton qui vous intéresse.
       </p>
-      <a class="btn btn-success btn-large" href="#contact.php">pTabs &raquo;</a>
-      <a class="btn btn-success btn-large" href="#contact.php">pGallery &raquo;</a>
+      <a class="btn btn-success btn-large" href="../plugin/pTabs/">pTabs &raquo;</a>
+      <a class="btn btn-success btn-large" href="../plugin/pGallery/">pGallery &raquo;</a>
     </div>
     
   </div>

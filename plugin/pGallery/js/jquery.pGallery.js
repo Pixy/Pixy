@@ -371,6 +371,7 @@
           currentImg = 0;
           nextImg = 0;
           animating = false;
+          $(document).unbind('keypress');
         $('#pContainer').fadeOut(100, function() {
           $(this).empty().remove();
         });
@@ -419,10 +420,8 @@
         
         /** NAVIGATION PAR LES FLECHES DU CLAVIER **/
         if(parametres.keyboardNav == true) {
-          console.log('plop');
           // Flèche de droite - NEXT
           if (e.keyCode == 39) {
-          console.log(39);
             e.preventDefault();
             if(parseInt(currentImg) == nbImages - 1) { // Si c'est la dernière image
               if(parametres.circular == true) { // Si le slider est circulaire
@@ -439,7 +438,6 @@
           
           // Flèche de gauche - PREV
            if (e.keyCode == 37) {
-           console.log(37);
             e.preventDefault();
             if(parseInt(currentImg) == 0) { // Si c'est la première image
               if(parametres.circular == true) { // Si le slider est circulaire
