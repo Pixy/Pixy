@@ -43,38 +43,50 @@
      */
     function chargerPage(currentTab) {
       // Loader de chargement 
-      content.empty().append('<div id="pTabsLoader"><img src="'+ parametres.imageLoader +'" alt="Loader" title="Loader" /></div>');
-      
-      // Récupération de l'URL
-      var url = $( currentTab ).attr( 'href' ); // Récupérationd de l'URL
-      
-      // Récupération des data
-      if(parametres.data != '') {
-        data = parametres.data( $( currentTab ) );
-      } else {
-        data = '';
-      }
-      
-      // Chargement de la page
-      content.load(url, data, function(response, status, request) {
-        // Si erreur
-        if(request.status != 200) {
-          console.log(request.statusText);
-          if(response == '') {
-            content.empty().append('Une erreur est survenue, veuillez nous excuser pour la gêne occasionnée');
+      content.fadeOut(200, function() {
+        $(this).empty().append('<div id="pTabsLoader"><img src="'+ parametres.imageLoader +'" alt="Loader" title="Loader" /></div>').fadeIn(100, function() {
+          // Récupération de l'URL
+          var url = $( currentTab ).attr( 'href' ); // Récupérationd de l'URL
+          
+          // Récupération des data
+          if(parametres.data != '') {
+            data = parametres.data( $( currentTab ) );
+          } else {
+            data = '';
           }
-        }
-        
-        // On enlève les classes currentTab
-        $( '.currentTab' ).removeClass( 'currentTab' );
-        // Puis on ajoute la classe à l'élément courant
-        $(currentTab).parent().addClass( 'currentTab' );
-        
-        // Si callback
-        if(parametres.callback) {
-          parametres.callback($(this));
-        }
+          
+          $.ajax({
+            url: url,
+            data: data,
+            success: function(response, status, request) {
+              // Si erreur
+              if(request.status != 200) {
+                console.log(request.statusText);
+                if(response == '') {
+                  content.fadeOut(100, function() {
+                    $(this).empty().append('Une erreur est survenue, veuillez nous excuser pour la gêne occasionnée').fadeIn(500);
+                  });
+                }
+              } else {
+                content.fadeOut(100, function() {
+                  $(this).empty().append(response).fadeIn(500);
+                });
+              }
+              
+              // On enlève les classes currentTab
+              $( '.currentTab' ).removeClass( 'currentTab' );
+              // Puis on ajoute la classe à l'élément courant
+              $(currentTab).parent().addClass( 'currentTab' );
+              
+              // Si callback
+              if(parametres.callback) {
+                parametres.callback($(this));
+              }
+            }
+          });
+        });
       });
+      
     }
     
     
