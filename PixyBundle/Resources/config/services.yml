@@ -5,3 +5,4 @@ services:
 #    pixy_pixy.example:
 #        class: %pixy_pixy.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    pixy_pixy.

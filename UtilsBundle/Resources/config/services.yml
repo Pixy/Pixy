@@ -1,0 +1,8 @@
+parameters:
+#    pixy_utiles.example.class: Pixy\UtilsBundle\Example
+
+services:
+    pixy_utils.image:
+        class: Pixy\UtilsBundle\Service\ImagePixy
+    pixy_utils.fonctions:
+        class: Pixy\UtilsBundle\Service\Pixy
