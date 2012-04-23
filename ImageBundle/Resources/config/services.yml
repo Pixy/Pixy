@@ -1,7 +1,0 @@
-parameters:
-#    pixy_image.example.class: Pixy\ImageBundle\Example
-
-services:
-#    pixy_image.example:
-#        class: %pixy_image.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
