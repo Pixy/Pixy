@@ -30,6 +30,27 @@ class Pixy {
     }
     return $chaine;
   }
+  
+  
+  /**
+   * En test : url-rewriting
+   * Param : la chaine
+   * @param string Chaine
+   * @param array Replace
+   * @param string Delimiter
+   * @return string
+   */
+  function slug($str, $replace=array(), $delimiter='-')  {
+		setlocale(LC_ALL, 'en_US.UTF8');
+		if( !empty($replace) ) {
+      $str = str_replace((array)$replace, ' ', $str);
+		}
+		$clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+		$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+		$clean = strtolower(trim($clean, '-'));
+		$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+		return $clean;
+}
 
 
   /**
@@ -136,12 +157,12 @@ class Pixy {
    * @return type bool
    */
   public function creerDossier($dossier) {
-        if(!is_dir($dossier)) {
-            mkdir($dossier, 0755, true);
-            return true;
-        } else {
-            return false;
-        }
+    if(!is_dir($dossier)) {
+        mkdir($dossier, 0755, true);
+        return true;
+    } else {
+        return false;
+    }
   }
   
   /**
