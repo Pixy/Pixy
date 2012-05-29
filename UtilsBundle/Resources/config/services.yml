@@ -6,3 +6,5 @@ services:
         class: Pixy\UtilsBundle\Service\ImagePixy
     pixy_utils.fonctions:
         class: Pixy\UtilsBundle\Service\Pixy
+    pixy_utils.image_workshop:
+        class: Pixy\UtilsBundle\Service\ImageWorkshop
