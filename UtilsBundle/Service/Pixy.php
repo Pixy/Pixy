@@ -39,7 +39,7 @@ class Pixy {
      * @param string Delimiter
      * @return string Chaine
      */
-    function slug($str, $replace=array(), $delimiter='-') {
+    public function slug($str, $replace=array(), $delimiter='-') {
         setlocale(LC_ALL, 'en_US.UTF8');
         if (!empty($replace)) {
             $str = str_replace((array) $replace, ' ', $str);
